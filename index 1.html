@@ -38,17 +38,56 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const fifteen = inventors.filter( (inventor) => {
+      if (inventor.year>1499 && inventor.year<1600) {
+        return true; //keep it
+      }
+    } ); 
+    //filter nhận vào 1 function mà loop qua từng phần tử trong array, nếu return true -> keep
+    console.table(fifteen); //console array dưới dạng bảng
+
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+      //map sẽ trả về full số lượng giống như khi đưa vào
+    const fullName = inventors.map((inventor) => {
+      return inventor.first + ' ' + inventor.last;
+    })
+    console.log(fullName);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
+    const old = inventors.sort((a,b) => {
+      if (a.year>b.year) return 1;
+      else return -1;
+
+    })
+    console.table(old);
+
+    const oldest = inventors.sort( (a,b) => a.year>b.year ? 1 : -1)
+    console.log(oldest);
+
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+      //used to reduce an array to a single value.  
+    const totalYear = inventors.reduce((total,inventor) => {
+      return total + (inventor.passed - inventor.year);
+    },0);
+
+    console.log(totalYear);
+
 
     // 5. Sort the inventors by years lived
+
+    const older = inventors.sort( (a,b) => {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - b.year;
+      return lastGuy > nextGuy ? -1 : 1;
+    })
+console.table(older);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -60,6 +99,10 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const sum = data.reduce(total, (each)=> {
+      
+    },0)
 
   </script>
 </body>
